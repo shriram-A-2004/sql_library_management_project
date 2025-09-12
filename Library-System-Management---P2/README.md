@@ -368,7 +368,7 @@ SELECT * FROM branch_reports;
 ```
 
 **Task 16: CTAS: Create a Table of Active Members**  
-Use the CREATE TABLE AS (CTAS) statement to create a new table active_members containing members who have issued at least one book in the last 2 months.
+Use the CREATE TABLE AS (CTAS) statement to create a new table active_members containing members who have issued at least one book in the last 6 months.
 
 ```sql
 
@@ -379,7 +379,7 @@ WHERE member_id IN (SELECT
                         DISTINCT issued_member_id   
                     FROM issued_status
                     WHERE 
-                        issued_date >= CURRENT_DATE - INTERVAL '2 month'
+                        issued_date >= CURRENT_DATE - INTERVAL '6 month'
                     )
 ;
 
@@ -406,11 +406,7 @@ ON e.branch_id = b.branch_id
 GROUP BY 1, 2
 ```
 
-**Task 18: Identify Members Issuing High-Risk Books**  
-Write a query to identify members who have issued books more than twice with the status "damaged" in the books table. Display the member name, book title, and the number of times they've issued damaged books.    
-
-
-**Task 19: Stored Procedure**
+**Task 18: Stored Procedure**
 Objective:
 Create a stored procedure to manage the status of books in a library system.
 Description:
@@ -473,22 +469,6 @@ WHERE isbn = '978-0-375-41398-8'
 
 ```
 
-
-
-**Task 20: Create Table As Select (CTAS)**
-Objective: Create a CTAS (Create Table As Select) query to identify overdue books and calculate fines.
-
-Description: Write a CTAS query to create a new table that lists each member and the books they have issued but not returned within 30 days. The table should include:
-    The number of overdue books.
-    The total fines, with each day's fine calculated at $0.50.
-    The number of books issued by each member.
-    The resulting table should show:
-    Member ID
-    Number of overdue books
-    Total fines
-
-
-
 ## Reports
 
 - **Database Schema**: Detailed table structures and relationships.
@@ -520,3 +500,4 @@ This project showcases SQL skills essential for database management and analysis
 - **Discord**: [Join our community for learning and collaboration](https://discord.gg/36h5f2Z5PK)
 
 Thank you for your interest in this project!
+
